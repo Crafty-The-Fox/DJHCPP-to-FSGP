@@ -1,4 +1,4 @@
-import os, sys, shutil
+import os, sys, shutil, argparse
 import tkinter as tk
 from tkinter import filedialog
 
@@ -10,6 +10,12 @@ from routines.DJH_FSGP_Generator import Make_FSGP
 
 
 def main():
+    
+    parser = argparse.ArgumentParser(description="Convert the contents of a DJHCPP Formatted Custom Mix into FSGP (DLC) Format")
+    parser.add_argument("-x360", action="store_true")
+    args = parser.parse_args()
+    
+    
     file_diag = tk.Tk()
     file_diag.withdraw()
 
@@ -37,6 +43,12 @@ def main():
     Make_FSGP(IDTag, Output_Path + '/' + IDTag, Output_Path + '/' + IDTag + '/DLC/')
 
     shutil.rmtree(Output_Path + '/' + IDTag + '/Text') #cleanup
-
+    
+    if args.x360:
+        #move the FSGP file from where it originally is to where it should be for the 360, renaming it in the process.
+        shutil.move(Output_Path + '/' + IDTag + '/DLC/DLC-' + IDTag, Output_Path +  '/' + IDTag + '/DLC.CRC', copy_function=shutil.copy2)
+        
+    
+    
 if __name__ == '__main__':
     sys.exit(main())
