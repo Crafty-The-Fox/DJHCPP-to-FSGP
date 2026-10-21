@@ -1,4 +1,4 @@
-import os, sys
+import os, sys, shutil
 import tkinter as tk
 from tkinter import filedialog
 
@@ -36,7 +36,7 @@ def main():
 
     Make_FSGP(IDTag, Output_Path + '/' + IDTag, Output_Path + '/' + IDTag + '/DLC/')
 
-    os.removedirs(Output_Path + '/' + IDTag + '/Text') #cleanup
+    shutil.rmtree(Output_Path + '/' + IDTag + '/Text') #cleanup
 
 if __name__ == '__main__':
     sys.exit(main())
