@@ -30,7 +30,7 @@ def main():
 
     handle_files(Song_Path, Output_Path, IDTag)
 
-    process_tracklisting(Tracklisting_Path, Output_Path + '/' + IDTag + '/DLC/' + IDTag + '/TrackListing.xml', IDTag)
+    process_tracklisting(Tracklisting_Path, Output_Path + '/' + IDTag + '/DLC/' + IDTag + '/TrackListing.xml', IDTag, args.x360)
 
     process_trac(
         Song_Path + '/Info For TRAC.csv',
