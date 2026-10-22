@@ -11,3 +11,13 @@ def handle_files(input_path, output_folder, IDTag):
     shutil.copytree(Chart_Input, Chart_Output)
 
 
+def handle_files_xenia(input_path, output_folder, IDTag):
+
+    files_output = output_folder + '/' + IDTag + '_Xenia/0000000000000000/4156087F/00000002'
+    header_output_folder = output_folder + '/' + IDTag + '_Xenia/0000000000000000/4156087F/Headers/00000002'
+    os.makedirs(files_output)
+    os.makedirs(header_output_folder)
+    shutil.copytree(input_path, files_output + '/' + IDTag)
+    return header_output_folder
+
+
